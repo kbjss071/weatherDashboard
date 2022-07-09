@@ -1,0 +1,60 @@
+section {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    list-style-position: inside;
+    background-color: aqua;
+    margin: 5px;
+    padding: 0;
+}
+
+header > h1 {
+    background-color: linear-gradient(rgb(75, 75, 235), rgb(3, 3, 120));
+    text-align: center;
+}
+/* class selector */
+.search {
+    float: left;
+    display: block;
+    width: 300px;
+    border: 1px solid black;
+    margin: 5%;
+}
+
+.result {
+    float: right;
+    display: flex;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.info {
+    border: solid 1px black;
+}
+
+.forecast {
+    display: flex;
+    position: relative;
+    border: 1px solid black;
+}
+
+.past {
+    background-color: rgb(180, 175, 175);
+    padding: 2%;
+    margin: 5%;
+    text-align: center;
+    font-size: x-large;
+}
+
+/* id selector */
+#search-input {
+    margin: 5% 0 5%;
+}
