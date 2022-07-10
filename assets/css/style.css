@@ -54,7 +54,11 @@ header > h1 {
     font-size: x-large;
 }
 
+.card {
+    margin: 0 5%;
+}
+
 /* id selector */
 #search-input {
-    margin: 5% 0 5%;
+    margin: 3% 0 3%;
 }

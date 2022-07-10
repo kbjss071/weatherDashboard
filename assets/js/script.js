@@ -12,6 +12,12 @@ function fetchOpenWeather(){
         .then(response => response.json())
         .then(function(data){
             console.log(data);
+            console.log(data.name);
+            console.log(data.main.humidity); // unit should %
+            console.log(moment(data.dt).format("l"));
+            var unixTime = new Date (data.dt*1000);
+            console.log(data.dt*1000)
+
         });
 
 
@@ -30,5 +36,19 @@ btnSearch.addEventListener("click", function(e){
     localStorage.setItem("search", searchInput.value);
     fetchOpenWeather();
 });
+
+function unixTimeConverter(){
+    var unixTime = new Date (1657362860*1000);
+    var month = unixTime.getMonth();
+    var date = unixTime.getDate();
+    var year = unixTime.getFullYear();
+    var string = unixTime.getTime();
+    console.log(month);
+    console.log(date);
+    console.log(year);
+    console.log(string);
+}
+
+unixTimeConverter();
 
 fetchOpenWeather();
