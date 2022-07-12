@@ -11,3 +11,10 @@ https://kbjss071.github.io/weatherDashboard/
 - When the search history is clicked, the current and future weather conditions for the clicked city should be displayed.
 
 ## Works done in this project
+- Built index.html to have a searching form.
+- Designed the weather dashboard by writing style.css.
+- Fetched two APIs provided by OpenWeatherMap to get weather information in a city.
+- With the afforded information, create a result box for current weather condition in city as well as 5 card boxes for 5 days forecasting in city.
+- Given a city prompted by user, it displays temperature, wind speed, humidity and UV index with a color how serious the index is
+- Every prompted city is stored in local storage and it returns as a button element with text and id which are named as the prompted city.
+- Once the button element is clicked, the browser displays the city's weather conditions again.

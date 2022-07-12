@@ -99,3 +99,10 @@ header > h1 {
 #search-input {
     margin: 3% 0 3%;
 }
+
+#header {
+    background: linear-gradient(45deg, rgb(58, 58, 237), rgb(3, 3, 116));
+    color: white;
+    text-align: center;
+    padding: 1%;
+}

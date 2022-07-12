@@ -5,18 +5,22 @@ const searchHistory = document.getElementById("history");
 const btnClear = document.getElementById("clear-search");
 const todayWeather = document.getElementById("today");
 
+// Initialize searchArray to store searched city
 var searchArray = [];
 localStorage.setItem("searchArray", JSON.stringify(searchArray));
 
 function fetchOpenWeather(){
     if(localStorage.getItem("search")){
         var city = localStorage.getItem("search");
-        
+    
+        // Once a city is submitted, the city string is passed to a url link in order to search weather in the city
         var city_url = "https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=0fd6b4fe383cc3d0cc48aa0476837f29";
-        var forecast_url = "https://api.openweathermap.org/data/2.5/forecast?q="+ city + "&appid=0fd6b4fe383cc3d0cc48aa0476837f29";
+
+        // Initialize latitude, longitude and a new api link in order for later usage
         var lat, lon;
         var onecall_url;
         
+        // Fetch data from the url with city name
         fetch(city_url)
         .then(response => response.json())
         .then(function(data){
@@ -31,10 +35,10 @@ function fetchOpenWeather(){
             fetch(onecall_url)
             .then(response => response.json())
             .then(function(data){
-                console.log(data);
-
+                // Reset the div element which displays today's weather
                 todayWeather.innerHTML=``;
                 
+                // Create elements and define today's current weather conditions into the elements
                 var todayCity = document.createElement("h2");
                 todayCity.setAttribute("style", "display: inline-block");
                 var todayWeatherIcon = getWeatherIcon(data.current.weather[0].icon);
@@ -68,6 +72,7 @@ function fetchOpenWeather(){
                 todayWeather.appendChild(todayUV);
                 todayWeather.appendChild(todayUVIndication);
 
+                // Lines below are designed for 5-days forecast
                 daysForecast.innerHTML = ``;
                 for (let i = 1; i < 6; i++){
                         var cardDiv = document.createElement("div");
@@ -103,7 +108,6 @@ function fetchOpenWeather(){
                     }
                 })
 
-            // console.log(data);
         });
 
 
@@ -113,7 +117,7 @@ function fetchOpenWeather(){
 
 }
 
-
+// Set up addEventListener to receive a city string from user input
 btnSearch.addEventListener("click", function(e){
     e.preventDefault();
     localStorage.setItem("search", searchInput.value);
@@ -130,12 +134,15 @@ btnSearch.addEventListener("click", function(e){
     fetchOpenWeather();
 });
 
+
+// Clear search history if user clicks this button
 btnClear.addEventListener("click", function(e){
     e.preventDefault();
     
     clearSearchHistory();
 })
 
+// Convert Unix time to date
 function unixTimeConverter(dt){
     var unixTime = new Date (dt*1000);
     var dateString = unixTime.toLocaleDateString();
@@ -143,12 +150,14 @@ function unixTimeConverter(dt){
     return dateString;
 }
 
+// Convert Kelvin degree to Fahrenheit degree
 function kelvinToFahrenheit(kelvin){
     var fahrenheit = ((kelvin-273.15)*1.8)+ 32;
 
     return fahrenheit.toFixed(2);
 }
 
+// With iconCode passed to this function, create and return an img element sourcing the icon image
 function getWeatherIcon(iconCode){
     var img = document.createElement("img");
     img.setAttribute("src", "http://openweathermap.org/img/wn/" +iconCode+ ".png");
@@ -156,6 +165,7 @@ function getWeatherIcon(iconCode){
     return img;
 }
 
+// With given uv index, it returns corresponding class name depending on how serious the uv index is.
 function uvIndex(uv){
     if(uv < 2.5){
         return "favorable";
@@ -166,16 +176,20 @@ function uvIndex(uv){
     }
 }
 
+// Convert meter per sec to mile per hour
 function meterToMile(meter){
     return (meter*2.23694).toFixed(2);
 }
 
+// Clear search history visually on html and remove searchArray in the local storage.
 function clearSearchHistory(){
     var array = [];
     localStorage.setItem("searchArray", JSON.stringify(array));
     searchHistory.innerHTML = ``;
 }
 
+// Iterage search history array and return button elements for each search history in local storage.
+// Also set up the button to have onclick function and id, which is name of the searched city.
 function iterateSearch(){
     var array = JSON.parse(localStorage.getItem("searchArray"));
 
@@ -184,7 +198,7 @@ function iterateSearch(){
     for (let i=0; i< array.length; i++){
         var newCity = document.createElement("button");
         newCity.setAttribute("class", "btn btn-block past");
-        newCity.setAttribute("onclick", "historyOnclick");
+        newCity.setAttribute("onclick", "historyOnclick()");
         newCity.setAttribute("id", `${array[i]}`);
         newCity.innerText = array[i];
         searchHistory.append(newCity);
@@ -192,9 +206,9 @@ function iterateSearch(){
 
 }
 
+// If the history button is clicked, it responds with searching for a weather from the given city
 function historyOnclick(){
+    localStorage.setItem("search", event.target.id);
 
+    fetchOpenWeather();
 }
-
-
-fetchOpenWeather();
