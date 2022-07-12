@@ -2,6 +2,7 @@
 
 ## Link to the deployed application
 https://kbjss071.github.io/weatherDashboard/
+![Capture of the weather dashboard](./assets/images/Capture.PNG)
 
 ## To-do list
 - Weather dashboard with form inputs should return current and future weather conditions for a given city and the city has to be added to history.
