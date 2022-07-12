@@ -48,14 +48,51 @@ header > h1 {
 
 .past {
     background-color: rgb(180, 175, 175);
-    padding: 2%;
-    margin: 5%;
+    /* padding: 2%; */
+    margin: 5% 0;
     text-align: center;
     font-size: x-large;
 }
 
 .card {
-    margin: 0 5%;
+    margin: 0 1%;
+}
+
+.today {
+    border: 1px black solid;
+    padding: 2%;
+}
+
+.detail {
+    font-weight: 500;
+}
+
+.favorable {
+    background-color: rgb(56, 217, 56);
+    color: white;
+    padding: 0% 1.5%;
+    margin: 0 1%;
+    border-radius: 10%;
+}
+
+.moderate {
+    background-color: rgb(189, 189, 0);
+    color: white;
+    padding: 0% 1.5%;
+    margin: 0 1%;
+    border-radius: 10%;
+}
+
+.severe {
+    background-color: rgb(237, 77, 77);
+    color: white;
+    padding: 0% 1.5%;
+    margin: 0 1%;
+    border-radius: 10%;
+}
+
+.forecast-block {
+    margin: 3% 0;
 }
 
 /* id selector */

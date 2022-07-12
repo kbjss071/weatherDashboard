@@ -16,7 +16,7 @@
     </header>
 
     <main>
-        <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+        <div class="flex-row align-stretch align-content-start align-content-stretch-md min-100-vh bg-light">
             <div class="col-12 col-md-3 bg-light p-3">
                   <h1 class="text-primary">Search for a City: </h1>
                   <form id="search-form" class="mb-2">
@@ -24,61 +24,19 @@
                     <button class="btn btn-info btn-block" id="btn-search">Search</button>
                   </form>
                   <hr>
-                  <div class="history">
-                    <div class="past">Seoul</div>
-                    <div class="past">Atlanta</div>
-                    <div class="past">New York</div>
+                  <div class="history" id="history">
+                  </div>
+                  <div class="clear">
+                    <button class="btn btn-warning btn-block" id="clear-search">Clear Search History</button>
                   </div>     
             </div>
 
-
             <div class="col-12 col-md-9 p-3">
-                <h3>5-Day Forecast: <span id="result-text"></span></h3>
-                <div class="d-flex" id="result-content">
-                    <div class="card" style="width: 14rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <h5>Icon</h5>
-                            <h6>Temp</h6>
-                            <h6>Wind</h6>
-                            <h6>Humidity</h6>
-                        </div>                            
-                    </div>
-                    <div class="card" style="width: 14rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <h5>Icon</h5>
-                            <h6>Temp</h6>
-                            <h6>Wind</h6>
-                            <h6>Humidity</h6>
-                        </div>                            
-                    </div>
-                    <div class="card" style="width: 14rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <h5>Icon</h5>
-                            <h6>Temp</h6>
-                            <h6>Wind</h6>
-                            <h6>Humidity</h6>
-                        </div>                            
-                    </div>
-                    <div class="card" style="width: 14rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <h5>Icon</h5>
-                            <h6>Temp</h6>
-                            <h6>Wind</h6>
-                            <h6>Humidity</h6>
-                        </div>                            
-                    </div>
-                    <div class="card" style="width: 14rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <h5>Icon</h5>
-                            <h6>Temp</h6>
-                            <h6>Wind</h6>
-                            <h6>Humidity</h6>
-                        </div>                            
+                <div class="today bg-light" id="today">
+                </div>
+                <div class="forecast-block">
+                    <h3>5-Days Forecast: <span id="result-text"></span></h3>
+                    <div class="d-flex" id="forecast">        
                     </div>
                 </div>
             </div>
